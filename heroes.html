@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/fva6zoc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Hellmann's Heroes</title>
+    <link rel="icon" type="image/x-icon" href="images\favicon-02.png">
+    <link rel="stylesheet" href="styles/new_york/style.css">
+    
+  </head>
+    <body>
+
+        <!-- Game Menu -->
+        <div id="gameMenu" class="menu">
+        <h1>HELLMANN'S</h1>
+        <h2>HEROES®</h2>
+            
+        <button id="startGame">Play Game!</button>
+
+        <div class="button-container">
+            <button id="howToPlay">How to Play</button>
+            <button id="aboutGame">About</button>
+        </div>
+        
+        <div id="funFact">Fun Fact: Loading...</div> <!-- Placeholder for fun facts -->
+
+        <div id="created_by">Developed and Designed by Chanel Clarke<br> To see more of my work, visit <a id="portfolio" target="_blank" href="https://chanel-design.com/">chanel-design.com</a></div>
+ <!--<img id="background" src="C:\Users\chane\Desktop\Menu.bg.png"> -->
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+    <button id="nextWorldButton" style="display:none;">Level 2</button>
+
+    <!-- Asset Images and Audio -->
+    <div class="assets">
+      <img id="background" src="images\game_bgs\new_york.png">
+      <img id="player_mayo" src="images\player_sprite_sheet_1.png">
+      <img id="ketchup" src="images\obstacle_sprite_sheet_1.png">
+      <audio id="bg_music"><source src="audio/bg_music_1.mp3"></audio>
+      <audio id="buttonClickSound"><source src="audio/click.wav"></audio>
+      <audio id="charge" src="audio/charge.mp3"></audio>
+      <audio id="flap1" src="audio/flap1.mp3"></audio>
+      <audio id="flap2" src="audio/flap2.mp3"></audio>
+      <audio id="flap3" src="audio/flap3.mp3"></audio>
+      <audio id="flap4" src="audio/flap4.mp3"></audio>
+      <audio id="flap5" src="audio/flap5.mp3"></audio>
+      <audio id="win" src="audio/win.mp3"></audio>
+      <audio id="lose" src="audio/lose.mp3"></audio>
+    </div>
+
+       <!-- Scripts -->
+    <script src="scripts/new_york/audio.js"></script>
+    <script src="scripts/new_york/background.js"></script>
+    <script src="scripts/new_york/player.js"></script>
+    <script src="scripts/new_york/obstacle.js"></script>
+    <script src="scripts/new_york/main.js"></script>
+
+    <script>
+  const menu = document.querySelector('.menu');
+  const canvas = document.getElementById('canvas1');
+
+  function resizeMenu() {
+    if (menu && canvas) {
+      menu.style.width = canvas.width + 'px';
+      menu.style.height = canvas.height + 'px';
+    }
+  }
+
+  window.addEventListener('resize', resizeMenu);
+  resizeMenu();
+</script>
+
+<!-- Pop-up for How to Play and About -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span id="popupClose" class="popup-close">&times;</span>
+        <h2 id="popupTitle">How to Play</h2>
+        <p id="popupText">Here are the instructions on how to play the game...</p>
+      </div>
+    </div>
+
+    <script>
+      // Set up the game and hide the menu when the game starts
+      document.getElementById('startGame').addEventListener('click', function() {
+        // Fade out the menu and hide it
+        document.getElementById("gameMenu").style.transition = "opacity 0.5s";
+        document.getElementById("gameMenu").style.opacity = "0";
+
+        setTimeout(() => {
+          document.getElementById("gameMenu").style.display = "none"; // Hide the menu
+          startGame(); // Start the game after fading
+        }, 500);
+      });
+
+      // Function and run the game
+      function startGame() {
+        console.log("Game is starting...");
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 720;
+        canvas.height = 720;
+
+        const game = new Game(canvas, ctx); //  game
+        let lastTime = 0;
+
+        // Animation loop
+        function animate(timeStamp) {
+          const deltaTime = timeStamp - lastTime;
+          lastTime = timeStamp;
+          game.render(deltaTime);
+          requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate); // Start animation loop
+      }
+
+      // Next World button click
+      const nextBtn = document.getElementById('nextWorldButton');
+      nextBtn.addEventListener('click', function() {
+        window.location.href = "https://chanel-design.com/"; // Replace with your next level URL
+      });
+
+            // How to Play button functionality
+      document.getElementById('howToPlay').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'block'; // Show pop-up
+        document.getElementById('popupTitle').innerText = 'How to Play';
+        document.getElementById('popupText').innerText = 'Press Space, click or tap the screen to fly and avoid enemies.\n\
+        \n\ Press \'C\' or swipe to use a charge boost (uses energy).\n\
+        \n\ Reach the end of each level to unlock the next - there are three in total.\n\
+        \n\ Good luck and have fun!';
+      });
+
+      // About button functionality
+      document.getElementById('aboutGame').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'block'; // Show pop-up
+        document.getElementById('popupTitle').innerText = 'About';
+        document.getElementById('popupText').innerText = 'Hellmann\'s Heroes® is my response to the D&AD New Blood Hellmann\'s 2025 brief and my first fully coded game.\n\ \n\ It\'s targeted for Gen Z, but fun for anyone to play!\n\ \n\ The 2D web game boosts brand awareness through playful visuals, brand storytelling through a custome fun fact generator and engagement through an incentive-based reward system for players who complete the game.\n\ \n\ Developed and Designed by Chanel Clarke.';
+      });
+
+       // Close the pop-up
+      document.getElementById('popupClose').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'none'; // Hide pop-up
+      });
+
+      // Fun Fact functionality (change fact each time the page loads)
+      function displayRandomFunFact() {
+        const facts = [
+          "Hellmann's is the #1 mayo brand in the U.S.",
+          "Hellmann's mayonnaise is made with high-quality, cage-free eggs.",
+          "Did you know Hellmann's helps reduce food waste by making recipes out of leftovers?",
+          "Hellmann's was first introduced in 1905 by Richard Hellmann in New York City.",
+          "Hellmann's offers a variety of mayo flavors including avocado oil and olive oil versions.",
+          "Hellmann's® spreads better than butter right out of the fridge!",
+          "Hellmann's is committed to sustainable sourcing of its ingredients.",
+          "Hellmann's use free-range and barn eggs in their mayonnaise.",
+          "For a crisp grilled cheese sandwich, brush the bread with Hellmann\’s mayonnaise, then grill... bon appétit!",
+        ];
+        const randomFact = facts[Math.floor(Math.random() * facts.length)];
+        document.getElementById('funFact').innerText = 'Fun Fact: ' + randomFact;
+      }
+
+      // Display random fact on page load
+      window.onload = displayRandomFunFact;
+    </script>
+    <script>
+          window.addEventListener('click', () => {
+            document.getElementById("bg_music").play();
+          });
+        </script>
+    
+  </body>
+</html>
+
+
