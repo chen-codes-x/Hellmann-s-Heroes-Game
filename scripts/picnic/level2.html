@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/fva6zoc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Hellmann's Heroes</title>
+    <link rel="icon" type="image/x-icon" href="images\favicon-02.png">
+    <link rel="stylesheet" href="styles/new_york/style.css">
+    
+  </head>
+    <body>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+    <button id="nextWorldButton" style="display:none;">Level 2</button>
+
+    <!-- Asset Images and Audio -->
+    <div class="assets">
+      <img id="background" src="images\game_bgs\picnic.png">
+      <img id="player_mayo" src="images\player_sprite_sheet_1.png">
+      <img id="ketchup" src="images\obstacle_sprite_sheet_1.png">
+      <audio id="bg_music"><source src="audio/bg_music_2.mp3"></audio>
+      <audio id="buttonClickSound"><source src="audio/click.wav"></audio>
+      <audio id="charge" src="audio/charge.mp3"></audio>
+      <audio id="flap1" src="audio/flap1.mp3"></audio>
+      <audio id="flap2" src="audio/flap2.mp3"></audio>
+      <audio id="flap3" src="audio/flap3.mp3"></audio>
+      <audio id="flap4" src="audio/flap4.mp3"></audio>
+      <audio id="flap5" src="audio/flap5.mp3"></audio>
+      <audio id="win" src="audio/win.mp3"></audio>
+      <audio id="lose" src="audio/lose.mp3"></audio>
+    </div>
+
+       <!-- Scripts -->
+    <script src="scripts/picnic/audio.js"></script>
+    <script src="scripts/picnic/background.js"></script>
+    <script src="scripts/picnic/player.js"></script>
+    <script src="scripts/picnic/obstacle.js"></script>
+    <script src="scripts/picnic/main.js"></script>
+
+    <script>
+  const canvas = document.getElementById('canvas1');
+</script>
+
+    <script>
+      // Function and run the game
+      window.onload = function(startGame) {
+        console.log("Game is starting...");
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 720;
+        canvas.height = 720;
+
+        const game = new Game(canvas, ctx); //  game
+        let lastTime = 0;
+
+        // Animation loop
+        function animate(timeStamp) {
+          const deltaTime = timeStamp - lastTime;
+          lastTime = timeStamp;
+          game.render(deltaTime);
+          requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate); // Start animation loop
+    }
+    </script>
+  </body>
+</html>
+
+
