@@ -1,0 +1,256 @@
+html, body { 
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: "citrus-gothic-solid", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#canvas1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.assets {
+  display: none;
+}
+
+/* Improved button container: allows wrapping on small screens */
+.button-container {
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;    /* allow buttons to wrap to new line on small screens */
+  padding: 1vh 0;
+}
+
+/* keep these grouped controls centered and flexible */
+#howToPlay, #aboutGame {
+  flex: 1;
+  text-align: center;
+}
+
+/* ===== Responsive Start Button (PLAY) =====
+   responsive font-size, width and padding using clamp() and vw/vh */
+#startGame {
+  font-size: clamp(1rem, 2.5vw, 1.8rem);          /* responsive text */
+  padding: clamp(10px, 2.5vh, 18px) clamp(16px, 6vw, 48px); /* responsive vertical & horizontal padding */
+  width: clamp(200px, 40vw, 460px);               /* min 160px, preferred 40vw, max 420px */
+  max-width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292A6A;
+  color: rgb(254, 247, 233);;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+/* small interaction polish */
+#startGame:active { transform: translateY(2px) scale(0.995); }
+
+#startGame:hover {
+  background-color: #FFCB04;
+  color: #064a76cc;
+}
+
+/* Other control buttons (HowToPlay, About) kept responsive too */
+#howToPlay {
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  padding: clamp(8px, 2vh, 12px) clamp(12px, 4vw, 20px);
+  background-color: #292A6A;
+  color: rgb(254, 247, 233);;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: -10px;
+  min-width: 120px;
+}
+
+#howToPlay:hover {
+  background-color: #064a76cc;
+  color: #FFCB04;
+}
+
+#aboutGame {
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  padding: clamp(8px, 2vh, 12px) clamp(12px, 4vw, 20px);
+  background-color: #292A6A;
+  color: rgb(254, 247, 233);;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: -10px;
+  min-width: 120px;
+}
+
+#aboutGame:hover {
+  background-color: #064a76cc;
+  color: #FFCB04;
+}
+
+/* Responsive Menu Overlay */
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image:
+    linear-gradient(rgba(6, 74, 118, 0.8), rgba(6, 74, 118, 0.9)),
+    url('https://livecoventryac-my.sharepoint.com/:i:/r/personal/clarkec10_uni_coventry_ac_uk/Documents/Chanel_Clarke_6019AAD_img5.png?csf=1&web=1&e=5iLTO5');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: rgb(254, 247, 233);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  text-align: center;
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+#portfolio {
+  text-decoration: none;
+  color: #FFCB04;
+}
+
+.menu h1 {
+  font-size: clamp(6rem, 6vw, 5rem);
+  margin-top: 1vh;
+  margin-bottom: -5vh;
+}
+
+.menu h2 {
+  font-size: clamp(6rem, 10vw, 8.5rem);
+  margin-top: 0%;
+  margin-bottom: 1vh;
+}
+
+.menu button {
+  font-family: "citrus-gothic-solid", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  width: clamp(150px, 20vw, 220px);
+  padding: 1em 2em;
+  background-color: #292A6A;
+  color:  rgb(254, 247, 233);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu button:hover {
+  background-color: #FFCB04;
+  color: #064a76cc;
+}
+
+#funFact {
+  font-size: 20px;
+  font-family: "citrus-gothic-solid", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:  rgb(254, 247, 233);
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+/* 💬 Popup Window Styles (Responsive) */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: clamp(15px, 3vw, 25px);
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.popup h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #292A6A;
+  margin-bottom: 15px;
+}
+
+.popup p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #333;
+}
+
+.popup-close {
+  font-size: clamp(3rem, 5vw, 4rem);
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+}
+
+.popup-close:hover {
+  color: #FFCB04;
+}
+
+#nextWorldButton {
+  position: absolute;
+  bottom: 20px;      /* distance from bottom of the screen */
+  right: 20px;       /* distance from right edge */
+  font-family: "citrus-gothic-solid", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);  /* slightly smaller font */
+  padding: 0.5em 1em;                      /* slimmer button */
+  background-color: #FFCB04;
+  color: #064a76cc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none;     /* hide by default */
+  z-index: 1000;
+  /*box-shadow: 0 2px 5px rgba(0,0,0,0.2);  /* subtle shadow for polish */
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+#nextWorldButton:hover {
+  background-color: #064a76cc;
+  color: #FFCB04;
+  transform: scale(1.05);  /* subtle hover pop */
+}
