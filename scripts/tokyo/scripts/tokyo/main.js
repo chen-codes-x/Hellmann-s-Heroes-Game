@@ -12,14 +12,15 @@ class Game {
     this.sound = new AudioControl();
 
     this.obstacles = [];
-    this.numberOfObstacles = 8;
+    this.numberOfObstacles = 12;
 
     this.gravity;
     this.speed;
     this.minSpeed;
     this.maxSpeed;
 
-    this.score = 0;
+    this.startingScore = 18;
+    this.score = this.startingScore;
     this.gameOver = false;
     this.gameWin = false;
 
@@ -246,7 +247,7 @@ for (let i = 0; i < this.numberOfObstacles; i++) {
 }
 
 window.addEventListener('load', function(){
-  const canvas = document.getElementById('canvas1');
+  const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
 
   canvas.width = 720;

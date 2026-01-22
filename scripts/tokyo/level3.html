@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://use.typekit.net/fva6zoc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Hellmann's Heroes | Level 3</title>
+    <link rel="icon" type="image/x-icon" href="images\favicon-02.png">
+    <link rel="stylesheet" href="styles/tokyo/style.css">
+
+    
+  </head>
+    <body>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+    <button id="nextWorldButton" style="display:none;">Finish</button>
+
+    <!-- Asset Images and Audio -->
+    <div class="assets">
+      <img id="background" src="images\game_bgs\tokyo.jpg">
+      <img id="player_mayo" src="images/player_sprite_sheet_1.png">
+      <img id="ketchup" src="images/obstacle_sprite_sheet_1.png">
+      <audio id="bg_music"><source src="audio/bg_music_3.mp3"></audio>
+      <audio id="buttonClickSound"><source src="audio/click.wav"></audio>
+      <audio id="charge" src="audio/charge.mp3"></audio>
+      <audio id="flap1" src="audio/flap1.mp3"></audio>
+      <audio id="flap2" src="audio/flap2.mp3"></audio>
+      <audio id="win"><source src="audio/win.mp3"></audio>
+      <audio id="lose"><source src="audio/lose.mp3"></audio>
+
+
+    </div>
+
+       <!-- Scripts -->
+    <script src="scripts/tokyo/audio.js"></script>
+    <script src="scripts/tokyo/background.js"></script>
+    <script src="scripts/tokyo/player.js"></script>
+    <script src="scripts/tokyo/obstacle.js"></script>
+    <script src="scripts/tokyo/main.js"></script>
+
+    <script>
+      const canvas = document.getElementById('gameCanvas');
+    </script>
+
+
+    <script>
+      // Function and run the game
+      function startGame() {
+        console.log("Game is starting...");
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 720;
+        canvas.height = 720;
+
+        const game = new Game(canvas, ctx); //  game
+        let lastTime = 0;
+
+        // Animation loop
+        function animate(timeStamp) {
+          const deltaTime = timeStamp - lastTime;
+          lastTime = timeStamp;
+          game.render(deltaTime);
+          requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate); // Start animation loop
+      }
+
+      // Next World button click
+      const nextBtn = document.getElementById('nextWorldButton');
+      nextBtn.addEventListener('click', function() {
+        window.location.href ="win.html"; // next level URL
+      });
+
+      </script>
+      <script>
+          window.addEventListener('click', () => {
+            document.getElementById("bg_music").play();
+          });
+        </script>
+    
+  </body>
+</html>
+
+
