@@ -19,7 +19,8 @@ class Game {
     this.minSpeed;
     this.maxSpeed;
 
-    this.score = 0;
+    this.startingScore = 8;
+    this.score = this.startingScore;
     this.gameOver = false;
     this.gameWin = false;
 
@@ -103,7 +104,8 @@ class Game {
 
     this.createObstacles();
 
-    this.score = 0;
+    this.score = 8;
+    this.levelScore = 0;
     this.gameOver = false;
     this.gameWin = false;
     this.timer = 0;
@@ -137,7 +139,7 @@ class Game {
     if (
       !this.gameOver &&
       !this.gameWin &&
-      this.score >= this.numberOfObstacles
+      this.levelScore >= this.numberOfObstacles
     ) {
       this.triggerGameWin();
     }

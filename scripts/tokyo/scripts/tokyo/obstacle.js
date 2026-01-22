@@ -36,6 +36,7 @@ class Obstacle {
             if (!this.scored && this.x + this.scaledWidth < this.game.player.x) {
                 this.scored = true;
                 this.game.score++;
+                this.game.levelScore++;
             }
         } else if (this.game.gameOver) {
             this.speedY += 0.1; // gradual fall

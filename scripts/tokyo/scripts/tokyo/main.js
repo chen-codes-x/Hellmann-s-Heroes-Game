@@ -104,7 +104,8 @@ class Game {
 
     this.createObstacles();
 
-    this.score = 0;
+    this.score = 18;
+    this.levelScore = 0;
     this.gameOver = false;
     this.gameWin = false;
     this.timer = 0;
@@ -138,7 +139,7 @@ class Game {
     if (
       !this.gameOver &&
       !this.gameWin &&
-      this.score >= this.numberOfObstacles
+      this.levelScore >= this.numberOfObstacles
     ) {
       this.triggerGameWin();
     }
