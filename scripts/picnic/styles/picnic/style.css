@@ -28,7 +28,6 @@ html, body {
 .assets {
   display: none;
 }
-
 #nextWorldButton {
   position: absolute;
   bottom: 20px;      /* distance from bottom of the screen */

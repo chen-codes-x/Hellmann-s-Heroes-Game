@@ -246,7 +246,7 @@ for (let i = 0; i < this.numberOfObstacles; i++) {
 }
 
 window.addEventListener('load', function(){
-  const canvas = document.getElementById('canvas1');
+  const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
 
   canvas.width = 720;

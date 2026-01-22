@@ -220,7 +220,7 @@ html, body {
 
 .popup-close {
   font-size: clamp(3rem, 5vw, 4rem);
-  color: white;
+  color: #292A6A;
   cursor: pointer;
   position: absolute;
   top: 15px;
