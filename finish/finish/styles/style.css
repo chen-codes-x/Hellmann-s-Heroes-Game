@@ -44,48 +44,28 @@ html, body {
 h1 {
   font-size: clamp(3rem, 6vw, 6rem);
   margin: 0;
-  z-index: 2;
 }
 
 h2 {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
   max-width: 800px;
   margin: 0;
-  z-index: 2;
-}
-
-/* JAR IMAGE */
-.jar {
-  width: clamp(180px, 25vw, 320px);
-  margin: 20px 0;
-  z-index: 20;
 }
 
 /* VOUCHER BOX */
 .voucher-box {
+  position: relative;
   background-color: #292A6A;
-  padding: 25px 30px;
+  padding: 25px 30px 40px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  z-index: 2;
-  margin-top: 10px;;
+  margin-top: 10px;
 }
 
-.redeem-info {
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  max-width: 700px;
-  line-height: 1.5;
-  opacity: 0.9;
-}
-
-#shop {
-  text-decoration: none;
-  color: #FFCB04;
-}
-
+/* CODE */
 .code {
   font-size: 1.5rem;
   letter-spacing: 3px;
@@ -115,14 +95,22 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* SPRITE LAYER */
+/* JAR IMAGE (ANCHOR TO VOUCHER) */
 .sprite {
   position: absolute;
-  bottom: 0;
-  right: 8%;
-  width: clamp(120px, 18vw, 220px);
-  z-index: 30;
+  bottom: -140px;
+  left: 70px;
+  width: clamp(580px, 428vw, 720px);
+  z-index: 5;
   pointer-events: none;
+}
+
+/* TEXT */
+.redeem-info {
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  max-width: 700px;
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
 /* STATS TABLE */
@@ -153,29 +141,24 @@ td {
   border-top: 1px solid rgba(255,255,255,0.2);
 }
 
+/* REPLAY BUTTON */
 .replay {
   text-decoration: none;
 }
 
 #startGame {
-  font-size: clamp(1rem, 2.5vw, 1.8rem);          /* responsive text */
-  padding: clamp(10px, 2.5vh, 18px) clamp(16px, 6vw, 48px); /* responsive vertical & horizontal padding */
-  width: clamp(200px, 40vw, 460px);               /* min 160px, preferred 40vw, max 420px */
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  padding: clamp(10px, 2.5vh, 18px) clamp(16px, 6vw, 48px);
+  width: clamp(200px, 40vw, 460px);
   max-width: 100%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   background-color: #292A6A;
-  color: rgb(254, 247, 233);;
-  border: none;
-  cursor: pointer;
+  color: rgb(254, 247, 233);
   border-radius: 10px;
-  box-sizing: border-box;
   transition: transform 0.12s ease, background-color 0.15s ease;
 }
-
-/* small interaction polish */
-#startGame:active { transform: translateY(2px) scale(0.995); }
 
 #startGame:hover {
   background-color: #FFCB04;
@@ -184,13 +167,10 @@ td {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .jar {
-    width: 220px;
-  }
-
   .sprite {
-    right: 2%;
-    width: 150px;
+    width: 200px;
+    bottom: -15px;
+    right: -10px;
   }
 
   h1 {
