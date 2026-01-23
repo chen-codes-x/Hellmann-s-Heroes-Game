@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hellmann's Heroes | Giveaway</title>
+  <link rel="icon" type="image/x-icon" href="finish/images/favicon-02.png">
+  <link rel="stylesheet" href="https://use.typekit.net/fva6zoc.css">
+
+  <link rel="stylesheet" href="finish\styles\style.css">
+</head>
+
+<body>
+
+  <!-- PANEL 1 -->
+  <section class="page">
+    <div class="panel">
+
+      <h1>Congratulations!</h1>
+
+
+      <h2>You’ve been selected as this week's winner of<br> the limited-edition Hellmann’s Heroes mayonnaise jar</h2>
+      
+
+
+      <div class="voucher-box">
+        <div id="code" class="code">************</div>
+        <button onclick="generateCode()">Reveal your Code</button>
+        <button onclick="copyCode()">Copy Code</button>
+      </div>
+
+      <p class="redeem-info">
+        To redeem your code:<br>
+        1. Visit the Hellmann’s shop: <a id="shop" target="_blank" href="https://www.hellmanns.com/uk/products/mayonnaise.html">www.hellmann's-heroes/shop.com</a><br>
+        2. Select “Hellmann’s Heroes Limited Edition Mayo Jar.”<br>
+        3. Enter your unique code at checkout to claim your prize.
+        </p>
+
+
+      <!-- Sprite layered on top -->
+      <img class="sprite" src="finish\images\Free Mayonnaise Jar.png" alt="Hero Sprite">
+
+    </div>
+  </section>
+
+  <!-- PANEL 2 -->
+  <section class="page">
+    <div class="panel secondary">
+
+      <h1>Hero Stats</h1>
+      
+      <h2>A true hero!</h2>
+
+      <div class="stats">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Completion Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Level 1</td><td>01:12</td></tr>
+            <tr><td>Level 2</td><td>01:34</td></tr>
+            <tr><td>Level 3</td><td>02:01</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <p class="redeem-info">
+        Your reward has been unlocked and your unique code is ready above.
+        <br>
+        Thank you for playing Hellmann’s Heroes!<br><br>
+        <a href="../../Hellmann's Heroes Game/index.html" id="startGame" class="replay">
+        Play again!
+        </a>
+        </p>
+
+
+    </div>
+  </section>
+
+  <script>
+    function generateCode() {
+      let code = '';
+      for (let i = 0; i < 12; i++) {
+        code += Math.floor(Math.random() * 10);
+      }
+      document.getElementById('code').textContent = code;
+    }
+
+    function copyCode() {
+      const code = document.getElementById('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Code copied to clipboard!');
+      });
+    }
+  </script>
+
+</body>
+</html>
