@@ -230,7 +230,7 @@ for (let i = 0; i < this.numberOfObstacles; i++) {
   drawStatusText(){
     this.ctx.save();
 
-    this.ctx.fillStyle = 'black';
+    this.ctx.fillStyle = 'rgb(254, 247, 233)';
     this.ctx.textAlign = 'right';
     this.ctx.fillText('SCORE: ' + this.score, this.width - this.smallFont , this.largeFont);
 
