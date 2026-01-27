@@ -98,9 +98,10 @@ button:hover {
 /* JAR IMAGE (ANCHOR TO VOUCHER) */
 .sprite {
   position: absolute;
-  bottom: -140px;
-  left: 70px;
-  width: clamp(580px, 428vw, 720px);
+  top: 0px;
+  rotate: -30deg;;
+  right: 70px;
+  width: clamp(1080px, 928vw, 1220px);
   z-index: 5;
   pointer-events: none;
 }
@@ -146,21 +147,22 @@ td {
   text-decoration: none;
 }
 
-#startGame {
-  font-size: clamp(1rem, 2.5vw, 1.8rem);
-  padding: clamp(10px, 2.5vh, 18px) clamp(16px, 6vw, 48px);
-  width: clamp(200px, 40vw, 460px);
+#replayGame {
+  width: 100%;
   max-width: 100%;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  padding: clamp(10px, 2.5vh, 18px);
   background-color: #292A6A;
   color: rgb(254, 247, 233);
   border-radius: 10px;
   transition: transform 0.12s ease, background-color 0.15s ease;
 }
 
-#startGame:hover {
+#replayGame:hover {
   background-color: #FFCB04;
   color: #064a76cc;
 }
