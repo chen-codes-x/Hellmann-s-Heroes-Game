@@ -5,13 +5,20 @@ html, body {
   height: 100%;
   font-family: "citrus-gothic-solid", sans-serif;
   background:
-    linear-gradient(rgba(6, 74, 118, 0.85), rgba(6, 74, 118, 0.95)),
-    url('https://livecoventryac-my.sharepoint.com/:i:/r/personal/clarkec10_uni_coventry_ac_uk/Documents/Chanel_Clarke_6019AAD_img5.png?csf=1&web=1&e=5iLTO5');
+    linear-gradient(#064a76d9, rgba(6, 74, 118, 0.95)),
+    url('images/menu-bg.png');
   background-size: cover;
   background-position: center;
   color: rgb(254, 247, 233);
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* FULL SCREEN PANELS */
@@ -22,7 +29,6 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 3vw;
-  box-sizing: border-box;
 }
 
 .panel {
@@ -95,12 +101,12 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* JAR IMAGE (ANCHOR TO VOUCHER) */
+/* JAR IMAGE */
 .sprite {
   position: absolute;
-  top: 0px;
-  rotate: -30deg;;
+  top: 0;
   right: 70px;
+  rotate: -30deg;
   width: clamp(1080px, 928vw, 1220px);
   z-index: 5;
   pointer-events: none;
@@ -148,14 +154,13 @@ td {
 }
 
 #replayGame {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 
   font-size: clamp(1rem, 2.5vw, 1.8rem);
-  padding: clamp(10px, 2.5vh, 18px);
+  padding: 14px 32px;
+
   background-color: #292A6A;
   color: rgb(254, 247, 233);
   border-radius: 10px;
